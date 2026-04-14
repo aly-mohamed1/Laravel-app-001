@@ -43,3 +43,22 @@ Route::prefix('products')->group(function(){
         return'A list of all products are here ...';
     });
 });
+
+Route::prefix('types')->group(function(){
+    Route::view('/', 'static.types.all-types');
+    Route::view('laptops', 'static.types.laptops');
+    Route::view('phones', 'static.types.phones');
+    Route::get('list', function(){
+        return 'A list of all types...';
+    });
+});
+
+Route::prefix('transportation')->group(function(){
+    Route::view('/', 'static.transportation.all-transportation');
+    Route::view('trains', 'static.transportation.trains');
+    Route::view('cars', 'static.transportation.cars');
+    Route::view('ships', 'static.transportation.ships');
+    Route::get('list', function(){
+        return 'A list of transportatioins';
+    });
+});
