@@ -16,6 +16,7 @@ Route::get('about', function () {
 // });
 
 Route::view('contact-us', 'static.contact.index');
+Route::redirect('contact', 'contact-us');
 
 // Route::get('services', function() {
 //     return view('static.services.all-services');
@@ -61,4 +62,16 @@ Route::prefix('transportation')->group(function(){
     Route::get('list', function(){
         return 'A list of transportatioins';
     });
+});
+
+Route::fallback(function(){
+    return view('page-404');
+});
+
+Route::get('products', function(){
+    return 'A list of all products...';
+});
+
+Route::get('products/33', function(){
+    return 'product 33 page';
 });
