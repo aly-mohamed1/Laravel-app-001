@@ -90,8 +90,20 @@ Route::prefix('products')->group(function(){
     });
 
     Route::get('by-category/{category}', function($category){
-        return "I will list all products in category $category";
-    });
+        return "I will list all products in category $category section";
+    })-> whereAlpha('category');
+
+    Route::get('new-arrivals/{day}', function($day){
+        return "A list of products arrived last $day";
+    })->whereIn('day', [
+        'sat',
+        'sun',
+        'mon',
+        'tue',
+        'wed',
+        'thu',
+        'fri',
+    ]);
 });
 
 
