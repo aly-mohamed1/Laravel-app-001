@@ -133,7 +133,7 @@ Route::prefix('shippers')->group(function(){
     Route::delete('delete/{shippers}', function($shippers){
         return "Deleting shipper $shippers";
     })->whereIn('shippers', [
-        'Fed Ex',
+        'FedEx',
         'DHL'
     ]);
 
