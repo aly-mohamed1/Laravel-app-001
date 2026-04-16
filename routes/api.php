@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Pest\TestCaseMethodFilters\IssueTestCaseFilter;
@@ -295,3 +296,23 @@ Route::prefix('shippers')->group(function(){
         });
     });
 })->whereIn('shippers', ['FedEx', 'DHL']);
+
+
+Route::prefix('tasks')->group(function(){
+    Route::get('/','App\Http\Controllers\TaskController@index');
+
+    Route::get('/create','App\Http\Controllers\TaskController@create');
+
+    Route::post('/','App\Http\Controllers\TaskController@store');
+
+    Route::get('/{tasks}','App\Http\Controllers\TaskController@show');
+
+    Route::post('/{tasks}/edit','App\Http\Controllers\TaskController@edit');
+    // OR
+    //Route::get('/', ['App\Http\Controllers\TaskController', 'index']);
+
+});
+
+Route::fallback(function(){
+    return view('page-404');
+});
