@@ -26,4 +26,12 @@ class TaskController extends Controller
         return $request->all();
     }
 
+    public static function update(Request $request, $task){
+        return $request->all();
+    }
+
+    public static function destroy($task){
+        return "I will delete task with ID $task";
+    }
+
 }
