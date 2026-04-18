@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Nette\Utils\Type;
 
 class EmployeeController extends Controller
 {
@@ -11,7 +12,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return "All employees";
+        return "Employees -> index";
+
     }
 
     /**
@@ -19,7 +21,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return "Employees -> create";
     }
 
     /**
@@ -27,7 +29,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Employees -> store";
     }
 
     /**
@@ -35,7 +37,7 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "Employees -> show";
     }
 
     /**
@@ -43,7 +45,7 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return "Employees -> edit";
     }
 
     /**
@@ -51,7 +53,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Employees -> update";
     }
 
     /**
@@ -59,6 +61,29 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Employees -> destroy";
     }
+
+    public function withdraw () {
+        return "Employees -> withdraw";
+    }
+    public function candidate () {
+        return "Employees candidate-> ";
+    }
+    public function new () {
+        return "Employees -> new";
+    }
+    public function training () {
+        return "Employees -> training";
+    }
+    public function vacation () {
+        return "Employees -> vacation";
+    }
+    public function dayOff () {
+        return "Employees -> dayOff";
+    }
+    public function permissions (string $type) {
+        return "Employees -> permissions";
+    }
+
 }

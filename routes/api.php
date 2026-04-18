@@ -1,20 +1,31 @@
 <?php
 
 use GuzzleHttp\Promise\Create;
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\{
+
+    TaskController,
+    EmployeeController,
+    ProductController
+};
+
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Http\Request;
+
 use Pest\TestCaseMethodFilters\IssueTestCaseFilter;
 
-Route::get('about', function () {
-    return 'Welcome to about us page';
-});
+
+// Route::get('about', function () {
+//     return 'Welcome to about us page';
+// });
 
 // Route::get('contact-us', function () {
 //     return view('static.contact.index');
 // });
 
-Route::view('contact-us', 'static.contact.index');
-Route::redirect('contact', 'contact-us');
+// Route::view('contact-us', 'static.contact.index');
+// Route::redirect('contact', 'contact-us');
 
 // Route::get('services', function() {
 //     return view('static.services.all-services');
@@ -299,19 +310,87 @@ Route::prefix('shippers')->group(function(){
 
 
 Route::prefix('tasks')->group(function(){
-    Route::get('/','App\Http\Controllers\TaskController@index');
+    // Route::get('/','App\Http\Controllers\TaskController@index');
 
-    Route::get('/create','App\Http\Controllers\TaskController@create');
+    // Route::get('/create','App\Http\Controllers\TaskController@create');
 
-    Route::post('/','App\Http\Controllers\TaskController@store');
+    // Route::post('/','App\Http\Controllers\TaskController@store');
 
-    Route::get('/{tasks}','App\Http\Controllers\TaskController@show');
+    // Route::get('/{tasks}','App\Http\Controllers\TaskController@show');
 
-    Route::post('/{tasks}/edit','App\Http\Controllers\TaskController@edit');
+    // Route::post('/{tasks}/edit','App\Http\Controllers\TaskController@edit');
+
+    // Route::put('/{tasks}','App\Http\Controllers\TaskController@update');
+
+    // Route::delete('/{tasks}','App\Http\Controllers\TaskController@destroy');
+
     // OR
-    //Route::get('/', ['App\Http\Controllers\TaskController', 'index']);
+
+    // Route::get('/', [TaskController::class, 'index']);
+
+    // Route::get('/create',[TaskController::class, 'create']);
+
+    // Route::post('/',[TaskController::class, 'store']);
+
+    // Route::get('/{tasks}',[TaskController::class, 'show']);
+
+    // Route::post('/{tasks}/edit',[TaskController::class, 'edit']);
+
+    // Route::put('/{tasks}',[TaskController::class, 'update']);
+
+    // Route::delete('/{tasks}',[TaskController::class, 'destroy']);
+});
+
+// OR
+
+// Route::prefix('tasks')->controller(TaskController::class)->group(function(){
+//     Route::get('/', 'index');
+
+//     Route::get('/create', 'create');
+
+//     Route::post('/', 'store');
+
+//     Route::get('/{tasks}', 'show');
+
+//     Route::post('/{tasks}/edit', 'edit');
+
+//     Route::put('/{tasks}', 'update');
+
+//     Route::delete('/{tasks}', 'destroy');
+// });
+
+//OR
+
+//Route::resource('tasks', TaskController::class); // Laravel start doing all (resources) routes automatically which are (index, create, store, show, edit, update, destriy)
+
+//Route::resource('employees', EmployeeController::class);
+
+// OR
+
+//Route::apiResource('tasks', TaskController::class); // Laravel starts doing some resources (index, store, show, update, destroy)
+
+//Route::apiResource('employees', EmployeeController::class);
+
+//OR
+
+// Extra Routes
+Route::prefix('employees')-> controller(EmployeeController::class)->group(function(){
+    Route::get('withdraw', 'withdraw');
+    Route::get('candidate', 'candidate');
+    Route::get('new', 'new');
+    Route::get('training', 'training');
+    Route::get('vacation', 'vacation');
+    Route::get('dayOff', 'dayOff');
+    Route::get('permissions/{type}', 'permissions');
 
 });
+
+Route::apiResources([
+    'tasks' => TaskController::class,
+    'employees' => EmployeeController::class,
+    'products' => ProductController::class
+]);
+
 
 Route::fallback(function(){
     return view('page-404');
