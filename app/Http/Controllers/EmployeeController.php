@@ -37,7 +37,7 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        return "Employees -> show";
+        return "Employees -> show $id";
     }
 
     /**

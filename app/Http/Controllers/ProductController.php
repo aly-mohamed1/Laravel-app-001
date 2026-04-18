@@ -11,7 +11,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return "All products are here";
     }
 
     /**
@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return "";
     }
 
     /**
@@ -27,7 +27,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return [
+            'message' => 'Product created',
+            'data' => $request->all(),
+        ];
     }
 
     /**
@@ -35,7 +38,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "New product with ID $id";
     }
 
     /**
@@ -51,7 +54,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return [
+            'message' => 'Product updated',
+            'id' => $id,
+            'data' => $request->all()
+        ];
     }
 
     /**
@@ -59,6 +66,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Delting the product with ID $id";
     }
+
 }

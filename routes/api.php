@@ -385,6 +385,17 @@ Route::prefix('employees')-> controller(EmployeeController::class)->group(functi
 
 });
 
+// Route::prefix('products')-> controller(ProductController::class)->group(function(){
+//     Route::get('withdraw', 'withdraw');
+//     Route::get('candidate', 'candidate');
+//     Route::get('new', 'new');
+//     Route::get('training', 'training');
+//     Route::get('vacation', 'vacation');
+//     Route::get('dayOff', 'dayOff');
+//     Route::get('permissions/{type}', 'permissions');
+
+// });
+
 Route::apiResources([
     'tasks' => TaskController::class,
     'employees' => EmployeeController::class,
