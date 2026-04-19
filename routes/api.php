@@ -6,7 +6,8 @@ use App\Http\Controllers\{
 
     TaskController,
     EmployeeController,
-    ProductController
+    ProductController,
+    UserController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -97,17 +98,15 @@ Route::prefix('products')->group(function(){
         ];
     });
 
-    Route::delete('{product}', function($product){
-        return "Deleting product $product";
-    });
+    // Route::delete('{product}', function($product){
+    //     return "Deleting product $product";
+    // });
 
-    Route::get('by-category/{category}', function($category){
-        return "I will list all products in category $category section";
-    })-> whereAlpha('category');
+    Route::get('by-category/{category}', [ProductController::class, 'byCategory'])->whereAlpha('category');
+    // The byCategory() method is a custom CRUD-related method (for reading products by category),
+    // but it's not part of Laravel's standard resource routes.
 
-    Route::get('new-arrivals/{day}', function($day){
-        return "A list of products arrived last $day";
-    })->whereIn('day', [
+    Route::get('new-arrivals/{day}', [ProductController::class, 'newArrivals'])->whereIn('day', [
         'sat',
         'sun',
         'mon',
@@ -116,15 +115,16 @@ Route::prefix('products')->group(function(){
         'thu',
         'fri',
     ]);
-    });
-
-Route::get('users', function(){
-    return 'A list of all users...';
 });
 
-Route::get('users/{id}', function($id){
-    return "User with ID $id";
-});
+
+// Route::get('users', function(){
+//     return 'A list of all users...';
+// });
+
+// Route::get('users/{id}', function($id){
+//     return "User with ID $id";
+// });
 
 Route::prefix('shippers')->group(function(){
     Route::get('/', function(){
@@ -399,7 +399,8 @@ Route::prefix('employees')-> controller(EmployeeController::class)->group(functi
 Route::apiResources([
     'tasks' => TaskController::class,
     'employees' => EmployeeController::class,
-    'products' => ProductController::class
+    'products' => ProductController::class,
+    'users' => UserController::class,
 ]);
 
 
