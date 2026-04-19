@@ -9,26 +9,26 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() // GET {{base_products}}
     {
-        return "All products are here";
+        return 'A list of all products are here...';
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($product) //
     {
-        return "";
+        return "Creating a new product which is: $product";
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) // POST {{base_products}}
     {
         return [
-            'message' => 'Product created',
+            'message' => 'Product stored',
             'data' => $request->all(),
         ];
     }
@@ -67,6 +67,16 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         return "Delting the product with ID $id";
+    }
+
+    public function byCategory($category)
+    {
+        return "I will list all products in category $category section";
+    }
+
+    public function newArrivals($day)
+    {
+        return "A list of products arrived last $day";
     }
 
 }
