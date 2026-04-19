@@ -98,15 +98,13 @@ Route::prefix('products')->group(function(){
         ];
     });
 
-    // Route::delete('{product}', function($product){
-    //     return "Deleting product $product";
-    // });
 
-    Route::get('by-category/{category}', [ProductController::class, 'byCategory'])->whereAlpha('category');
-    // The byCategory() method is a custom CRUD-related method (for reading products by category),
-    // but it's not part of Laravel's standard resource routes.
-
-    Route::get('new-arrivals/{day}', [ProductController::class, 'newArrivals'])->whereIn('day', [
+    //Since that its under the route of products so, there is no need to write:
+    //Route::prefix('products')->controller(ProductController::class)->group(function(){
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('by-category/{category}', 'byCategory')->whereAlpha('category');
+        Route::get('new-arrivals/{day}', 'newArrivals')->whereIn('day', [
+                                    //It should be wriiten in camelCase 'newArrivals'
         'sat',
         'sun',
         'mon',
@@ -114,7 +112,21 @@ Route::prefix('products')->group(function(){
         'wed',
         'thu',
         'fri',
-    ]);
+        ]);
+    });
+    //Route::get('by-category/{category}', [ProductController::class, 'byCategory'])->whereAlpha('category');
+    // The byCategory() method is a custom CRUD-related method (for reading products by category),
+    // but it's not part of Laravel's standard resource routes.
+
+    // Route::get('new-arrivals/{day}', [ProductController::class, 'newArrivals'])->whereIn('day', [
+    //     'sat',
+    //     'sun',
+    //     'mon',
+    //     'tue',
+    //     'wed',
+    //     'thu',
+    //     'fri',
+    // ]);
 });
 
 
