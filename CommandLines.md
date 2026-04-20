@@ -60,12 +60,12 @@ php artisan migrate:rollback
 php artisan migrate:rollback --step=3
 ```
 
-### Undo all migrations and re-run from scratch
+### Undo all migrations and re-run from scratch, (step nbach and then migrate)
 ```bash
 php artisan migrate:refresh
 ```
 
-### Drop all tables including (migrations table) and run all migrations from scratch
+### Drop all tables including (migrations table) and run all migrations from scratch 
 ```bash
 php artisan migrate:fresh
 ```
