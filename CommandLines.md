@@ -69,6 +69,6 @@ php artisan migrate:refresh
 ```bash
 php artisan migrate:fresh
 ```
-### Making changes in a table has been migrated, here I specified which table do I want to chjange it
+### Making changes in a table has been migrated, here I specified which table do I want to change it
 ```bash
 php artisan make:migration change_deleted_at_column_in_suppliers_table --table=suppliers
