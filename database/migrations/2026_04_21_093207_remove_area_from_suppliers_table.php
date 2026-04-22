@@ -23,12 +23,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (! in_array('deleted_at', $this->supplierColumns(), true)) {
+        if (! in_array('area', $this->supplierColumns(), true)) {
             return;
         }
 
         Schema::table('suppliers', function (Blueprint $table) {
-            $table->timestamp('deleted_at')->nullable()->change();
+            $table->dropColumn('area');
         });
     }
 
@@ -37,12 +37,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if (! in_array('deleted_at', $this->supplierColumns(), true)) {
+        if (! Schema::hasTable('suppliers') || in_array('area', $this->supplierColumns(), true)) {
             return;
         }
 
         Schema::table('suppliers', function (Blueprint $table) {
-            $table->softDeletes('deleted_at')->change();
+            $table->string('area')->nullable();
         });
     }
 };
