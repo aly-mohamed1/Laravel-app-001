@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('reactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('reaction_type_id')->constrained();
+            $table->morphs('reactable');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

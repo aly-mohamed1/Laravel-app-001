@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type', 20);
             $table->timestamps();
             $table->softDeletes();
+            // 'timestamp('deleted_at')' it is not null which means you should delete something when I enter a data which is unlogic
         });
     }
 
