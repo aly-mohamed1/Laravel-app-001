@@ -6,6 +6,7 @@ use App\Http\Controllers\{
 
     TaskController,
     EmployeeController,
+    InitController,
     ProductController,
     UserController
 };
@@ -418,4 +419,8 @@ Route::apiResources([
 
 Route::fallback(function(){
     return view('page-404');
+});
+
+Route::prefix('init')->controller(InitController::class)->group(function(){
+    Route::get('migrations', 'migrations');
 });
