@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('post_statuses', function (Blueprint $table) {
             $table->id();
+            $table->string('type', 20);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
