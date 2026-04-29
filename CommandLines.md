@@ -72,3 +72,21 @@ php artisan migrate:fresh
 ### Making changes in a table has been migrated, here I specified which table do I want to change it
 ```bash
 php artisan make:migration change_deleted_at_column_in_suppliers_table --table=suppliers
+```
+### Creating a folder in the Models
+```bash
+php artisan make:mode City
+```
+### Creating a folder in the Models and a controller in the Controllers
+```bash
+php artisan make:mode Country-c
+```
+### Creating a folder in the Models and a controller in the Controllers with its all resources
+```bash
+php artisan make:mode Item-cr
+```
+### Creating a folder in the Models, a controller in the Controllers with its all resources, in seeders, in migrations, in factories
+```bash
+php artisan make:mode Car-a
+```
+
