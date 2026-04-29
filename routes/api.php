@@ -423,4 +423,6 @@ Route::fallback(function(){
 
 Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('migrations', 'migrations');
+    Route::get('controllers', 'controllers');
+    Route::get('models', 'models');
 });
