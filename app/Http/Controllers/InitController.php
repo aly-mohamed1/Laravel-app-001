@@ -56,6 +56,8 @@ class InitController extends Controller
                 'name' => $model,
                 '-a' => true,
             ]);
+
+            sleep(1);
         }
     }
 }
