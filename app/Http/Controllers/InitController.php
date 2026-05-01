@@ -49,12 +49,25 @@ class InitController extends Controller
             ]);
         }
     }
-    public function Models(){
+    public function models(){
 
         foreach ($this->models as $model){
             Artisan::call('make:model', [
                 'name' => $model,
-                '-a' => true,
+            ]);
+
+            sleep(1);
+        }
+    }
+
+    public function all(){
+
+        foreach ($this->models as $model){
+            Artisan::call('make:model', [
+                'name' => $model,
+                'all' => true,
+                '--api' => true,
+                '--force' => true,
             ]);
 
             sleep(1);
