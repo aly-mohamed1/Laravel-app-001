@@ -22,10 +22,10 @@ class InitController extends Controller
     public function migrations(){
 
         $tables = [
-            'users',
             'post_statuses',
             'reaction_types',
             'posts',
+            'comments',
             'replies',
             'reactions',
         ];
