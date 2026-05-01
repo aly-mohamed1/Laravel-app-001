@@ -424,7 +424,7 @@ Route::fallback(function(){
 
 Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('migrations', 'migrations');
-    Route::get('all', 'all');
+    //Route::get('all', 'all');
     Route::get('controllers', 'controllers');
     Route::get('models', 'models');
 });
@@ -433,12 +433,12 @@ Route::apiResources([
     'tasks' => TaskController::class,
     'employees' => EmployeeController::class,
     'products' => ProductController::class,
-
-    'comments' => CommentController::class,
-    'posts' => PostController::class,
-    'post-statuses' => PostStatusController::class,
-    'reactions' => ReactionController::class,
-    'reaction-types' => ReactionTypeController::class,
-    'replies' => ReplyController::class,
     'users' => UserController::class,
+
+    // 'comments' => CommentController::class,
+    // 'posts' => PostController::class,
+    // 'post-statuses' => PostStatusController::class,
+    // 'reactions' => ReactionController::class,
+    // 'reaction-types' => ReactionTypeController::class,
+    // 'replies' => ReplyController::class,
 ]);

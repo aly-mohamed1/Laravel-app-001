@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 class InitController extends Controller
 {
     private $models = [
+        'User',
         'PostStatus',
         'ReactionType',
         'Post',
@@ -54,23 +55,25 @@ class InitController extends Controller
         foreach ($this->models as $model){
             Artisan::call('make:model', [
                 'name' => $model,
-            ]);
-
-            sleep(1);
-        }
-    }
-
-    public function all(){
-
-        foreach ($this->models as $model){
-            Artisan::call('make:model', [
-                'name' => $model,
-                'all' => true,
-                '--api' => true,
+                '--all' => true,
                 '--force' => true,
             ]);
 
             sleep(1);
         }
     }
+
+    // public function all(){
+
+    //     foreach ($this->models as $model){
+    //         Artisan::call('make:model', [
+    //             'name' => $model,
+    //             'all' => true,
+    //             '--api' => true,
+    //             '--force' => true,
+    //         ]);
+
+    //         sleep(1);
+    //     }
+    // }
 }
