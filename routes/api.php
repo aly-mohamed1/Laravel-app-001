@@ -8,7 +8,15 @@ use App\Http\Controllers\{
     EmployeeController,
     InitController,
     ProductController,
-    UserController
+
+    CommentController,
+    PostController,
+    PostStatusController,
+    ReactionController,
+    ReactionTypeController,
+    ReplyController,
+    UserController,
+
 };
 
 use Illuminate\Support\Facades\Route;
@@ -409,20 +417,28 @@ Route::prefix('employees')-> controller(EmployeeController::class)->group(functi
 
 // });
 
-Route::apiResources([
-    'tasks' => TaskController::class,
-    'employees' => EmployeeController::class,
-    'products' => ProductController::class,
-    'users' => UserController::class,
-]);
-
-
 Route::fallback(function(){
     return view('page-404');
 });
 
+
 Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('migrations', 'migrations');
+    Route::get('all', 'all');
     Route::get('controllers', 'controllers');
     Route::get('models', 'models');
 });
+
+Route::apiResources([
+    'tasks' => TaskController::class,
+    'employees' => EmployeeController::class,
+    'products' => ProductController::class,
+
+    'comments' => CommentController::class,
+    'posts' => PostController::class,
+    'post-statuses' => PostStatusController::class,
+    'reactions' => ReactionController::class,
+    'reaction-types' => ReactionTypeController::class,
+    'replies' => ReplyController::class,
+    'users' => UserController::class,
+]);
