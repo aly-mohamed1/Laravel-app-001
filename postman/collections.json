@@ -1,0 +1,248 @@
+{
+  "collections": [
+
+    {
+      "info": {
+        "name": "Posts",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_posts", "value": "{{bas_url}}/posts" }
+      ],
+      "item": [
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{API_token}}" }
+            ],
+            "url": "{{base_posts}}"
+          }
+        },
+        {
+          "name": "Get Post By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{API_token}}" }
+            ],
+            "url": "{{base_posts}}/1"
+          }
+        },
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{API_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Post\",\n  \"content\": \"Post content\"\n}"
+            },
+            "url": "{{base_posts}}"
+          }
+        },
+        {
+          "name": "Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{API_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_posts}}/1"
+          }
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{API_token}}" }
+            ],
+            "url": "{{base_posts}}/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Comments",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_comments", "value": "{{bas_url}}/comments" }
+      ],
+      "item": [
+        {
+          "name": "Get All Comments",
+          "request": {
+            "method": "GET",
+            "url": "{{base_comments}}"
+          }
+        },
+        {
+          "name": "Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Comment text\"\n}"
+            },
+            "url": "{{base_comments}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Users",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_users", "value": "{{bas_url}}/users" }
+      ],
+      "item": [
+        {
+          "name": "Get Users",
+          "request": {
+            "method": "GET",
+            "url": "{{base_users}}"
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": "{{base_users}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Reactions",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_reactions", "value": "{{bas_url}}/reactions" }
+      ],
+      "item": [
+        {
+          "name": "Get Reactions",
+          "request": {
+            "method": "GET",
+            "url": "{{base_reactions}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Reaction Types",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_reaction_types", "value": "{{bas_url}}/reaction-types" }
+      ],
+      "item": [
+        {
+          "name": "Get Reaction Types",
+          "request": {
+            "method": "GET",
+            "url": "{{base_reaction_types}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Replies",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_replies", "value": "{{bas_url}}/replies" }
+      ],
+      "item": [
+        {
+          "name": "Get Replies",
+          "request": {
+            "method": "GET",
+            "url": "{{base_replies}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Post Statuses",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_post_statuses", "value": "{{bas_url}}/post-statuses" }
+      ],
+      "item": [
+        {
+          "name": "Get Post Statuses",
+          "request": {
+            "method": "GET",
+            "url": "{{base_post_statuses}}"
+          }
+        }
+      ]
+    },
+
+    {
+      "info": {
+        "name": "Init",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      },
+      "variable": [
+        { "key": "base_init", "value": "{{bas_url}}/init" }
+      ],
+      "item": [
+        {
+          "name": "Run Migrations",
+          "request": {
+            "method": "GET",
+            "url": "{{base_init}}/migrations"
+          }
+        },
+        {
+          "name": "Generate Controllers",
+          "request": {
+            "method": "GET",
+            "url": "{{base_init}}/controllers"
+          }
+        },
+        {
+          "name": "Generate Models",
+          "request": {
+            "method": "GET",
+            "url": "{{base_init}}/models"
+          }
+        }
+      ]
+    }
+
+  ]
+}
