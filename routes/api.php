@@ -1,12 +1,11 @@
 <?php
 
-use GuzzleHttp\Promise\Create;
-
+use App\Http\Controllers\InitController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
 
     TaskController,
     EmployeeController,
-    InitController,
     ProductController,
 
     CommentController,
@@ -19,7 +18,6 @@ use App\Http\Controllers\{
 
 };
 
-use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
 
@@ -424,7 +422,6 @@ Route::fallback(function(){
 
 Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('migrations', 'migrations');
-    //Route::get('all', 'all');
     Route::get('controllers', 'controllers');
     Route::get('models', 'models');
 });
@@ -433,12 +430,12 @@ Route::apiResources([
     'tasks' => TaskController::class,
     'employees' => EmployeeController::class,
     'products' => ProductController::class,
-    'users' => UserController::class,
 
-    // 'comments' => CommentController::class,
-    // 'posts' => PostController::class,
-    // 'post-statuses' => PostStatusController::class,
-    // 'reactions' => ReactionController::class,
-    // 'reaction-types' => ReactionTypeController::class,
-    // 'replies' => ReplyController::class,
+    'comments' => CommentController::class,
+    'posts' => PostController::class,
+    'post-statuses' => PostStatusController::class,
+    'reactions' => ReactionController::class,
+    'reaction-types' => ReactionTypeController::class,
+    'replies' => ReplyController::class,
+    'users' => UserController::class,
 ]);
