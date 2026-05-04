@@ -89,4 +89,12 @@ php artisan make:mode Item-cr
 ```bash
 php artisan make:mode Car-a
 ```
+### Dropping all tables and Seeding them again 
+```bash
+php artisan migrate:fresh--seed
+```
+### Seeding to a specific class with the same number in the factory which is 5 
+```bash
+php artisan db:seed--class=PostSeeder
+```
 
