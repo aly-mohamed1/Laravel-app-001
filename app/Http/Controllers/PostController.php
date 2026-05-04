@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-
+use App\Models\User;
 class PostController extends Controller
 {
     /**
@@ -13,7 +13,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // return User::all()->random(); // Get any user randomly
+        //return User::inRandomOrder()->get(); ## ERROR
+
+        //return User::inRandomOrder()->first()->id(); ## ERROR
     }
 
     /**
