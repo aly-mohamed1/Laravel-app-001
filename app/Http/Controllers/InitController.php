@@ -55,25 +55,25 @@ class InitController extends Controller
         foreach ($this->models as $model){
             Artisan::call('make:model', [
                 'name' => $model,
-                '--all' => true,
-                '--force' => true,
+                // '--all' => true,
+                // '--force' => true,
             ]);
 
             sleep(1);
         }
     }
 
-    // public function all(){
+    public function all(){
 
-    //     foreach ($this->models as $model){
-    //         Artisan::call('make:model', [
-    //             'name' => $model,
-    //             'all' => true,
-    //             '--api' => true,
-    //             '--force' => true,
-    //         ]);
+        foreach ($this->models as $model){
+            Artisan::call('make:model', [
+                'name' => $model,
+                'all' => true,
+                '--api' => true,
+                '--force' => true,
+            ]);
 
-    //         sleep(1);
-    //     }
-    // }
+            sleep(1);
+        }
+    }
 }
