@@ -14,12 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //Calling all seeders in order
+        // Calling all seeders in order
         $this->call([
             UserSeeder::class,
             PostStatusSeeder::class,
+            ReactionTypeSeeder::class,
             PostSeeder::class,
+            CommentSeeder::class,
+            ReplySeeder::class,
+            // ReactionSeeder::class,
         ]);
-
     }
 }

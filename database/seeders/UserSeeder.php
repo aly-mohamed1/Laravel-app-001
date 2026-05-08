@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -21,6 +20,6 @@ class UserSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        User::factory(10)->create(); // Ctreatin 10 fake data
+        User::factory(500)->create(); // Ctreatin 10 fake data
     }
 }

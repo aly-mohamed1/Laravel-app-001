@@ -18,7 +18,7 @@ class PostStatusFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // See seeder for the actual data
         ];
     }
 }

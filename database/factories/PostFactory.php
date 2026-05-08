@@ -7,8 +7,6 @@ use App\Models\PostStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use function Laravel\Prompts\text;
-
 /**
  * @extends Factory<Post>
  */
@@ -22,10 +20,10 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=> fake()->text(100),
-            'body'=> fake()->text(),
-            'user_id' => User::all()->random()->id, // Error in User::inRandomOrder()->first()->id,
-            'post_status'=> PostStatus::all()->random()->id,
+            'title' => fake()->text(100),
+            'body' => fake()->text(),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'post_status' => PostStatus::inRandomOrder()->first()->id,
         ];
     }
 }

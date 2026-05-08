@@ -17,6 +17,11 @@ class PostController extends Controller
         //return User::inRandomOrder()->get(); ## ERROR
 
         //return User::inRandomOrder()->first()->id(); ## ERROR
+
+        //$posts = Post::with(['comments', 'user', 'postStatus', 'reactions'])->get(); // Here means we have in the post a function called comment that returns class Comment
+
+        $posts = Post::with([ 'user', 'postStatus'])->withCount(['comments', 'reactions']) ->get(); // Here means we have in the post a function called comment that returns class Comment
+        return $posts;
     }
 
     /**
