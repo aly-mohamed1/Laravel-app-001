@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->text('body');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('post_status')->constrained();
+            $table->foreignId('post_status_id')->constrained();
             $table->timestamps();
         });
     }

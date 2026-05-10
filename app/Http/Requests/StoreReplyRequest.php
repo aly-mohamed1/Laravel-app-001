@@ -12,7 +12,7 @@ class StoreReplyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,9 @@ class StoreReplyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'reply' => 'required|between:5,500',
+            'comment_id' => 'required|exists:comments,id',
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

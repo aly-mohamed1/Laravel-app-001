@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('mobile')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // $table->timestamp('created_at');
-            // $table->timestamp('updated_at');
-            //$table->timestamp('deleted_at');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

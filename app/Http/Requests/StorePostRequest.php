@@ -12,7 +12,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Here you customize the authority to post
     }
 
     /**
@@ -23,7 +23,10 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|between:3,100',
+            'body' => ['required', 'min:50'],
+            'user_id' => 'required|exists:users,id',
+            'post_status_id' => 'required|exists:post_statuses,id',
         ];
     }
 }

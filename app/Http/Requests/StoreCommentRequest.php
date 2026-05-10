@@ -12,7 +12,7 @@ class StoreCommentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,18 @@ class StoreCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'comment' => 'required|between:5,500',
+            'post_id' => 'required|exists:posts,id',
+            'user_id' => 'required|exists:users,id'
+        ];
+    }
+
+    public function messages ():array {
+        return [
+            'comment.required' => 'لا بد من كتابة تعليقك هنا',
+            'comment.between' => 'التعليق بين حرفين و خمس مأة حرف',
+            'post_id.required' => 'حدد أي بوستفيهم',
+            'user_id.exists' => "This user doesn't exist"
         ];
     }
 }
