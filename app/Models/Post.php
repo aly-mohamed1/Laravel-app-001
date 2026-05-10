@@ -4,15 +4,26 @@ namespace App\Models;
 
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany; // that class helps me to make relations
 use Illuminate\Database\Eloquent\Relations\MorphMany; // that class helps me to make relations
 
+#[Fillable(['title', 'body', 'user_id', 'post_status_id'])]
 class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+
+    // protected $fillable = [
+    //     'title',
+    //     'body',
+    //     'user_id',
+    //     'post_status_id',
+
+    //     // ONLY THOSE ARE ABLED TO BE FILLED
+    // ];
 
     // relationships
     function comments () : HasMany

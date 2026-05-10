@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Dom\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use PHPUnit\Framework\MockObject\Stub\ReturnReference;
 
+#[Fillable(['reply', 'user_id', 'comment_id'])]
 class Reply extends Model
 {
     /** @use HasFactory<\Database\Factories\ReplyFactory> */

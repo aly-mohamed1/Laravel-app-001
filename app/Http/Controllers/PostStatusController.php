@@ -29,7 +29,7 @@ class PostStatusController extends Controller
      */
     public function store(StorePostStatusRequest $request)
     {
-        //
+        $data = $request->validated(); // EXPLAIN
     }
 
     /**
