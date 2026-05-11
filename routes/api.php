@@ -3,7 +3,7 @@
 use App\Http\Controllers\InitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-
+    AuthController,
     TaskController,
     EmployeeController,
     ProductController,
@@ -419,7 +419,22 @@ Route::fallback(function(){
     return view('page-404');
 });
 
+// Public Routes
+Route::prefix('auth')->controller(AuthController::class)->group(function(){
+    Route::post('login','login');
+    Route::post('register','register');
+    Route::post('logout','logout');
+    Route::post('forget-password','forget-password');
+    Route::post('reset-password','reset-password');
+    Route::post('change-password','change-password');
+    Route::post('active-sessions','active-sessions');
+    Route::post('logout-all','logout-all');
+    Route::post('logout-current','logout-current');
+    Route::post('logout-others','logout-others');
+});
 
+
+//Init
 Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('all', 'all');
     Route::get('migrations', 'migrations');
@@ -427,16 +442,25 @@ Route::prefix('init')->controller(InitController::class)->group(function(){
     Route::get('models', 'models');
 });
 
-Route::apiResources([
-    'tasks' => TaskController::class,
-    'employees' => EmployeeController::class,
-    'products' => ProductController::class,
 
-    'comments' => CommentController::class,
-    'posts' => PostController::class,
-    'post-statuses' => PostStatusController::class,
-    'reactions' => ReactionController::class,
-    'reaction-types' => ReactionTypeController::class,
-    'replies' => ReplyController::class,
-    'users' => UserController::class,
-]);
+// Private Routes
+Route::middleware(['auth:sanctum'])->group(function() {
+
+        Route::apiResources([
+            'tasks' => TaskController::class,
+            'employees' => EmployeeController::class,
+            'products' => ProductController::class,
+
+            'comments' => CommentController::class,
+            'posts' => PostController::class,
+            'post-statuses' => PostStatusController::class,
+            'reactions' => ReactionController::class,
+            'reaction-types' => ReactionTypeController::class,
+            'replies' => ReplyController::class,
+            'users' => UserController::class,
+        ]);
+    });
+
+
+
+
