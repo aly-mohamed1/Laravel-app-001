@@ -20,6 +20,6 @@ class UserSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        User::factory(500)->create(); // Ctreatin 10 fake data
+        User::factory(500)->create(); // Ctreatin 500 fake data
     }
 }
